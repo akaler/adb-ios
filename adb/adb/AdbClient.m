@@ -184,7 +184,9 @@ extern int do_sync_push(const char *lpath, const char *rpath, int verifyApk);
             return;
         }
         
-        NSString *installCmd = [NSString stringWithFormat:@"shell:pm install"];
+        //NSString *installCmd = [NSString stringWithFormat:@"shell:pm install"];
+        NSString *installCmd = [NSString stringWithFormat:@"shell:/usr/bin/pkgcmd -i -t tpk -p"];
+        /*
         if (flags & ADBInstallFlag_Replace)
             installCmd = [installCmd stringByAppendingString:@" -r"];
         
@@ -193,9 +195,9 @@ extern int do_sync_push(const char *lpath, const char *rpath, int verifyApk);
         
         if (flags & ADBInstallFlag_GrantAllRuntimePermission)
             installCmd = [installCmd stringByAppendingString:@" -g"];
-        
-        installCmd = [installCmd stringByAppendingFormat:@" %s", apk_dest];
-        
+        */
+        //installCmd = [installCmd stringByAppendingFormat:@" %s", apk_dest];
+        installCmd = [installCmd stringByAppendingFormat:@" %s -q ", apk_dest];
         int fd = adb_connect(installCmd.UTF8String);
         if(fd >= 0)
         {
