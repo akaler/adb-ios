@@ -58,6 +58,17 @@
     }];
 }
 
+-(IBAction)getTempDirectory:(id)sender
+{
+    NSLog(@"HELLLLOOOOO");
+
+    [_adb tempDirectory:@IP didResponse:^(BOOL succ, NSString *result) {
+        
+        [self.textview performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
+
+    }];
+}
+
 
 -(IBAction)uninstallApkBtn:(id)sender
 {

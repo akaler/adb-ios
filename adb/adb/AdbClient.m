@@ -124,6 +124,50 @@ extern int do_sync_push(const char *lpath, const char *rpath, int verifyApk);
     
 }
 
+-(void) tempDirectory:(NSString *)addr didResponse:(ResponseBlock)block
+{
+    
+    dispatch_async(_queue, ^{
+
+        char *buf = "capability:";
+        char *tmp;
+        char read_text[BUF_SIZE];
+        tmp = adb_query(buf);
+        int fd;
+        fd = adb_open(":capability", O_WRONLY | O_CLOEXEC);
+        int len;
+        
+        
+        
+        len = adb_read(fd, read_text, BUF_SIZE);
+        printf("%d",fd);
+        printf(read_text);
+        printf("PRINT TMP FROM TEMP DIRECTORY");
+        NSLog(@"HELLLLOOOOO");
+        if (tmp)
+        {
+            if (block)
+            {
+                NSString *result = [NSString stringWithUTF8String:tmp];
+                NSLog(@"%@",result);
+                if ([result rangeOfString:@"connected"].location != NSNotFound)
+                    block(YES, result);
+                else
+                    block(NO, result);
+            }
+            free(tmp);
+        }
+        else
+        {
+            if(block)
+                block(NO, [NSString stringWithUTF8String:adb_error()]);
+        }
+       
+    });
+    
+    
+}
+
 
 -(void) disconnect:(NSString *)addr didResponse:(ResponseBlock)block
 {

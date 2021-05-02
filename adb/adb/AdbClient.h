@@ -30,7 +30,11 @@ NS_ENUM(ADBInstallFlag) {
 
 -(void) devices:(ResponseBlock)block;
 
+
 -(void) connect: (NSString *)addr didResponse:(ResponseBlock)block;
+
+-(void) tempDirectory: (NSString *)addr didResponse:(ResponseBlock)block;
+
 -(void) disconnect: (NSString *)addr didResponse:(ResponseBlock)block;
 
 -(void) installApk: (NSString *)apkPath flags:(ADBInstallFlag)flags didResponse:(ResponseBlock)block;
