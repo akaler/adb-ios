@@ -9,31 +9,19 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var statusLabel: UILabel!
-    
 
+    @IBOutlet weak var EmailField: UITextField!
+    @IBOutlet weak var PasswordField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    @IBAction func LoginButtonPressed(_ sender: Any) {
-        
-        if validateFields(emailField: emailField.text ?? "", passField: passwordField.text ?? "") {
-            
-            // HTTP requests to back end here
-        }
-     else
-        {
-         statusLabel.text = "Email or password is invalid. Try again"
-         statusLabel.alpha = 1
-     }
+    
+    @IBAction func LoginButton(_ sender: Any) {
         
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -43,16 +31,5 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    func validateFields(emailField: String, passField: String) -> Bool {
-        if (emailField.isEmpty || passField.isEmpty) {
-            print("empty field")    // development
-            return false
-        }
-        if (!emailField.contains("@") || !emailField.contains(".")) {
-            print("invalid email")    // development
-            return false
-        }
-        return true
-    }
 
 }
