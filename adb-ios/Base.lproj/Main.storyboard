@@ -170,6 +170,7 @@
                     <connections>
                         <outlet property="EmailField" destination="t1u-WR-hdJ" id="VE1-Q8-Fze"/>
                         <outlet property="PasswordField" destination="7QF-SZ-6DX" id="nfX-iM-UOV"/>
+                        <outlet property="statusLabel" destination="pcU-nk-PTT" id="Bhv-uX-Cx1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptm-EU-3C8" sceneMemberID="firstResponder"/>
